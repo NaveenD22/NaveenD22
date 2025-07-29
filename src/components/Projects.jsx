@@ -31,11 +31,21 @@ const Projects = () => {
                             This is an organizational project. It’s confidential, and I’m unsure of the domain. Image represents a completed project.
                           </p>
                         ) : (
+							<>
                           <a href={project.link} target="_blank" rel="noopener noreferrer">
                             <button className="sm:text-xl p-2 bg-purple-700/70 rounded-2xl shadow-xl shadow-gray-700">
                               Live Demo
                             </button>
                           </a>
+						  {
+							project.code && project.code !== "#" ?<a href={project.code} target="_blank" rel="noopener noreferrer">
+                            <button className="sm:text-xl p-2 bg-purple-700/70 rounded-2xl shadow-xl shadow-gray-700">
+                              Source Code
+                            </button>
+                          </a> :<></>
+						  }
+						       
+						  </>
                         )}
                       </div>
                     </div>

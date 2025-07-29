@@ -234,48 +234,56 @@ export const ProjectsContent = [
     title: "CSM Platform",
     des: "CMS project where I have used Vercel,Next.js,NextAuth and Postgrees",
     link: "https://vercel-postgress-example-two.vercel.app/",
+    code:"https://github.com/NaveenD22/vercel-postgress-example"
   },
     {
     icon: shoppingCart, // Placeholder icon; replace with appropriate image if available
     title: "Shopping Cart Application",
     des: "Developed a dynamic shopping cart with React.js, Next.js, and an Observer pattern for real-time updates, featuring quantity management and a free gift threshold of $1000",
     link: "https://shopping-cart-assignment-six.vercel.app/",
+    code:"https://github.com/NaveenD22/Shopping-Cart-Assignment"
   },
     {
     icon: javaScriptImg,
     title: "Core JavaScript",
     des: "What I belive and trust is JS is backbone For Every Full Stack Developer And Here I Have Used Core JS Methods and Fundaments",
     link: "https://naveend22.github.io/Core-JavaScript-projects/",
+    code:"https://github.com/NaveenD22/Core-JavaScript-projects"
   },
   {
     icon: spotify,
     title: "Spotify Clone",
     des: "I'm confident enough to build such a challenging projects.Here I have learned Redux,Featching Data,Debugging",
     link: "https://spotify-clone-naveen-d4018.netlify.app/",
+    code:"#"
   },
   {
     icon: propertyBuilder, // Placeholder icon; replace with appropriate image if available
     title: "Property Builder",
     des: "Created tenant management app with React.js and Firebase, enhancing lookup speed",
     link: "#",
+    code:"#"
   },
   {
     icon: analyticsWeb, // Placeholder icon; replace with appropriate image if available
     title: "User Analytics Dashboard",
     des: "Developed React.js dashboard with Node.js and AWS, optimizing data rendering",
     link: "#",
+    code:"#"
   },
   {
     icon: wearableApp, // Placeholder icon; replace with appropriate image if available
     title: "Wearable Health App",
     des: "Developed iOS and Android app with Flutter, integrating wearable device data for heart rate and coherence metrics",
     link: "#",
+    code:"#"
   },
   {
     icon: netflix,
     title: "Netflix Clone",
     des: "Working With Api's Gives Me Lot Of Motivation and I Have Used Firebase For Authentication",
     link: "https://netflix-clone-28fe9.web.app/",
+    code:"#"
   },
 
 
