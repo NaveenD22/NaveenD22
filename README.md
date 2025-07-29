@@ -45,7 +45,7 @@ How to Reach Me 📫
 Email: dinaveen4018@gmail.com
 LinkedIn: https://www.linkedin.com/in/naveen-dudhyal-ba122a22a
 GitHub: https://github.com/NaveenD22
-Portfolio: https://naveend22.github.io/
+Portfolio: https://naveen-protfolio-seven.vercel.app/
 
 Get Hired! 🎯
 Looking to hire a seasoned frontend leader? Here’s why I’m a great fit:
