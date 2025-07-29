@@ -14,7 +14,7 @@ const Experience = () => {
 			<div className="flex-col-reverse gap-20 flex sm:flex-row  w-full justify-between items-center">
 	<div className="flex flex-col gap-10 sm:w-2/3 items-center p-10 justify-center ">
   <h2 className='text-3xl font-medium '>Why Hire Me as a Lead?</h2>
-  <ul className='space-y-6 text-2xl font-normal list-decimal  p-4 '>
+  <ul className='space-y-6 text-lg sm:text-2xl font-normal list-decimal  p-4 '>
     <li className='bg-gray-400 p-2 '>I lead teams to deliver SEO-friendly applications at scale, optimizing for search engine performance.</li>
     <li className='bg-gray-400 p-2 '>Enforce development with clean, maintainable code standards across projects.</li>
     <li className='bg-gray-400 p-2 '>Stay updated on the latest features of React.js, Next.js, and AWS, guiding teams to adopt cutting-edge technologies.</li>

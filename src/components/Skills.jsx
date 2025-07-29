@@ -20,8 +20,8 @@ const Skills = () => {
 							<div className="flex w-[38rem] justify-between items-center bg-white/80 p-2 rounded-3xl sm:p-4 h-32" key={i}>
 								<p className='text-5xl'>{skill?.icon}</p>
 								<div className="flex flex-col w-3/4 gap-2">
-									<h1 className='text-4xl'>{skill?.title}</h1>
-									<p>{skill?.des}</p>
+									<h1 className='sm:text-xl text-lg font-bold'>{skill?.title}</h1>
+									<p className='sm:text-lg text-sm'>{skill?.des}</p>
 								</div>
 								<p className='text-xl cursor-pointer
 								shadow-red-700 shadow-2xl'
