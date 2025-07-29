@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaArrowDown } from 'react-icons/fa'
 import { HomeContents } from './constants/constants'
-
+import avatar from "../assets/my-avatar-1.webp";
 const Home = () => {
 	return (
 		<div className='bg-black/20  mt-24 p-6 flex flex-col sm:flex-row sm:justify-around sm:py-52 
@@ -25,8 +25,8 @@ const Home = () => {
 					})}
 				</div>
 			</div>
-			<div className="right">
-				<img src="https://i.pinimg.com/originals/19/26/57/192657e7a2f9253672d24f9990093d7e.png" alt="bitMoji" className='h-96' />
+			<div className="right flex justify-center">
+				<img src={avatar} alt="bitMoji"    className='sm:h-[40rem] h-[20rem] rounded-3xl mb-10 sm:mb-0' />
 			</div>
 		</div>
 	)

@@ -17,7 +17,7 @@ import {
   FaGithub,
   FaDatabase,
 } from "react-icons/fa";
-import { SiTailwindcss, SiFirebase, SiRedux } from "react-icons/si";
+import {  SiFirebase } from "react-icons/si";
 import { TbBrandJavascript } from "react-icons/tb";
 import { IoMdArrowDropleftCircle, IoMdTrain } from "react-icons/io";
 import { GoPerson } from "react-icons/go";
@@ -29,7 +29,7 @@ import analyticsWeb from "../../assets/analytics.webp";
 import wearableApp from "../../assets/wearable.webp";
 import shoppingCart from "../../assets/shoppingCart.webp";
 import azure from "../../assets/Azure.webp";
-import avatar from "../../assets/avatar.webp";
+import avatar from "../../assets/my-avatar-2.webp";
 export const NavLinks = [
   {
     Links: "#Home",

@@ -26,7 +26,8 @@ const Info = () => {
         <img
           src={AboutMeContents?.icon}
           alt="logo"
-          className="h-96 object-contain mb-10 sm:mb-0"
+          // className="h-96 object-contain mb-10 sm:mb-0"
+           className='sm:h-[40rem] h-[20rem] rounded-3xl mb-10 sm:mb-0'
         />
 
         <div className="flex flex-col gap-6">
