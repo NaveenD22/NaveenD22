@@ -13,7 +13,7 @@ const Projects = () => {
           {ProjectsContent?.map((project, i) => {
             const isConfidential = project.link === '#';
             return (
-              <div className="flex w-[20rem] sm:w-[40rem] justify-around items-center rounded-3xl hover:rotate-1 transition-all duration-300" key={i}>
+              <div className="flex w-[40rem] sm:w-[40rem] justify-around items-center rounded-3xl hover:rotate-1 transition-all duration-300" key={i}>
                 <div className="flex flex-col text-center relative w-full">
                   {isConfidential ? (
                     <div className="w-full h-48 bg-gray-300 flex items-center justify-center rounded-t-xl">
