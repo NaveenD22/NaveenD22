@@ -21,14 +21,15 @@ import { SiTailwindcss, SiFirebase, SiRedux } from "react-icons/si";
 import { TbBrandJavascript } from "react-icons/tb";
 import { IoMdArrowDropleftCircle, IoMdTrain } from "react-icons/io";
 import { GoPerson } from "react-icons/go";
-import spotify from "../../assets/spotify-clone.png";
-import netflix from "../../assets/netflix-clone.png";
-import javaScriptImg from "../../assets/JavaScript-Games.png";
-import propertyBuilder from "../../assets/Property.png";
-import analyticsWeb from "../../assets/analytics.png";
-import wearableApp from "../../assets/wearable.png";
-import shoppingCart from "../../assets/shoppingCart.png";
-import azure from "../../assets/Azure.png";
+import spotify from "../../assets/spotify-clone.webp";
+import netflix from "../../assets/netflix-clone.webp";
+import javaScriptImg from "../../assets/JavaScript-Games.webp";
+import propertyBuilder from "../../assets/Property.webp";
+import analyticsWeb from "../../assets/analytics.webp";
+import wearableApp from "../../assets/wearable.webp";
+import shoppingCart from "../../assets/shoppingCart.webp";
+import azure from "../../assets/Azure.webp";
+import avatar from "../../assets/avatar.webp";
 export const NavLinks = [
   {
     Links: "#Home",
@@ -94,7 +95,7 @@ export const HomeContents = [
   },
 ];
 export const AboutMeContents = {
-  icon: "https://i.pinimg.com/originals/19/26/57/192657e7a2f9253672d24f9990093d7e.png",
+  icon: avatar,
   name: "Naveen Dudhyal",
   role: "Senior Frontend Team Lead (React.js, Next.js, Node.js, AWS)",
   des: `Senior Frontend Team Lead with 5+ years of experience leading teams to deliver web and mobile applications using React.js, Next.js, TypeScript, and Flutter. Expert in crafting responsive UI/UX with Redux, MUI, React Query, and Tailwind CSS, leveraging Google Design System Tokens. Proficient in data structures and skilled in Node.js, Express.js, and AWS. Passionate about mentoring, agile workflows, and transitioning to product management.`,
