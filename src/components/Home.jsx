@@ -73,7 +73,7 @@ const Home = () => {
       className='bg-black/20  p-6 flex flex-col sm:flex-row sm:justify-around min-h-screen justify-evenly items-center'
       id='Home'
     >
-      <div className='flex flex-col gap-7 sm:gap-14 mt-6'>
+      <div className='flex flex-col gap-7 sm:gap-14 mt-12'>
         <h3 className='text-black/90 sm:text-4xl text-xl font-bold text-line'>Hi There,</h3>
         <h1 className='text-black/90 sm:text-5xl text-2xl font-bold text-line'>
           I'm Naveen <span className='text-orange-900'>Dudhyal</span>
