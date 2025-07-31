@@ -16,11 +16,11 @@ const Experience = () => {
   <h2 className='sm:text-3xl text-2xl font-medium '>Why Hire Me as a Lead?</h2>
   <ul className='space-y-6 text-sm sm:text-2xl font-normal list-decimal  sm:p-4 p-1 '>
     <li className='bg-gray-300 p-2 rounded-md '>I lead teams to deliver SEO-friendly applications at scale, optimizing for search engine performance.</li>
-    <li className='bg-gray-400 p-2 rounded-md '>Enforce development with clean, maintainable code standards across projects.</li>
-    <li className='bg-gray-400 p-2 rounded-md '>Stay updated on the latest features of React.js, Next.js, and AWS, guiding teams to adopt cutting-edge technologies.</li>
-    <li className='bg-gray-400 p-2 rounded-md '>Oversee responsive, mobile-first designs, ensuring cross-platform compatibility under my leadership.</li>
-    <li className='bg-gray-400 p-2 rounded-md '>Quickly grasp new challenges and mentor teams to enhance their technical and problem-solving skills.</li>
-    <li className='bg-gray-400 p-2 rounded-md '>Align team efforts with company vision, driving product management strategies and agile workflows.</li>
+    <li className='bg-gray-300 p-2 rounded-md '>Enforce development with clean, maintainable code standards across projects.</li>
+    <li className='bg-gray-300 p-2 rounded-md '>Stay updated on the latest features of React.js, Next.js, and AWS, guiding teams to adopt cutting-edge technologies.</li>
+    <li className='bg-gray-300 p-2 rounded-md '>Oversee responsive, mobile-first designs, ensuring cross-platform compatibility under my leadership.</li>
+    <li className='bg-gray-300 p-2 rounded-md '>Quickly grasp new challenges and mentor teams to enhance their technical and problem-solving skills.</li>
+    <li className='bg-gray-300 p-2 rounded-md '>Align team efforts with company vision, driving product management strategies and agile workflows.</li>
   </ul>
 </div>
 			<div className="flex flex-col gap-6 sm:w-1/2 ">

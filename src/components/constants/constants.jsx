@@ -296,7 +296,7 @@ export const ExperiencContent = [
   {
     bag: <IoMdTrain />,
     arrow: <IoMdArrowDropleftCircle />,
-    title: "Socialpubli Influencer Marketing Company",
+    title: "Socialpubli",
     role: "React Developer (SDE I)",
     period: "Jan 2021 - Dec 2022 (2yrs)",
   },
@@ -310,7 +310,7 @@ export const ExperiencContent = [
   {
     bag: <IoMdTrain />,
     arrow: <IoMdArrowDropleftCircle />,
-    title: "Pankhtech Pvt Ltd (Sychedelic)",
+    title: "Pankhtech Pvt Ltd",
     role: "Senior Frontend Team Lead",
     period: "Jan 2024 - Jun 2025 (1.5yrs)",
   },
