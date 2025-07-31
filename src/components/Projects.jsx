@@ -16,11 +16,11 @@ const Projects = () => {
               <div className="flex w-[20rem] sm:w-[40rem] justify-around items-center rounded-3xl hover:rotate-1 transition-all duration-300" key={i}>
                 <div className="flex flex-col text-center relative w-full">
                   
-                    <div className="w-full h-[20rem] overflow-hidden rounded-t-xl">
+                    <div className="w-full sm:h-[20rem] h-[15rem] overflow-hidden rounded-t-xl">
                       <img src={project.icon} alt={project.title} className='w-full h-full object-cover' />
                     </div>
                   
-                  <h1 className='text-3xl font-semibold w-[20rem] bg-yellow-500 p-1 sm:w-full rounded-b-xl'>{project.title}</h1>
+                  <h1 className='sm:text-3xl text-xl font-semibold w-[20rem] bg-yellow-500 p-1 sm:w-full rounded-b-xl'>{project.title}</h1>
                   
                   <div className="flex flex-col text-black font-medium justify-end items-center h-full w-full absolute bottom-0 opacity-0 hover:opacity-100 transition-all duration-300">
                     <div className="bg-white/70 h-3/5 w-full p-2 flex flex-col justify-between">

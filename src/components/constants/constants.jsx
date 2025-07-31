@@ -108,7 +108,7 @@ export const SkillsContent = [
   {
     icon: <FaReact />,
     title: "Frontend",
-    des: "Expertise in JavaScript (ES6+), TypeScript, React.js, Next.js, Flutter, HTML5, CSS3, Tailwind CSS, Redux, MUI, React Query, and Google Design System Tokens",
+    des: "Expertise in JavaScript (ES6+), TypeScript, React.js, Next.js, Flutter, HTML5, CSS3, Tailwind CSS, Redux, And MUI.",
     arrow: <FaArrowRight />,
     des2: [
       "Proficient in building responsive UIs with React.js and Next.js, optimizing performance with TypeScript and Redux",

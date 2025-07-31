@@ -5,7 +5,7 @@ import { ExperiencContent } from './constants/constants'
 
 const Experience = () => {
 	return (
-		<div className='gap-14 bg-black/20 text-center p-6 py-14  flex flex-col justify-between items-end' id="Experience">
+		<div className='gap-14 bg-black/20 text-center sm:p-6 p-2 py-14  flex flex-col justify-between items-end' id="Experience">
 			
 			<div className="flex w-full justify-center items-center gap-2 ">
 				<p className='text-3xl'><FaWrench /></p>
@@ -23,19 +23,19 @@ const Experience = () => {
     <li className='bg-gray-400 p-2 '>Align team efforts with company vision, driving product management strategies and agile workflows.</li>
   </ul>
 </div>
-			<div className="flex flex-col gap-6    w-[22rem] sm:w-1/2 ">
+			<div className="flex flex-col gap-6 sm:w-1/2 ">
 
 				{ExperiencContent.map((exp, i) => {
 					return (<div className="flex w-full sm:justify-start justify-center items-center" key={i}>
 						<div className="flex items-center justify-center relative ">
-						<div className='h-[14rem] w-2 bg-slate-900 absolute left-5 -z-10' />
-						<p className='text-3xl bg-white/60 p-2 w-14  rounded-full border-2 border-yellow-700 flex  shadow-amber-700 shadow-lg '>{exp?.bag}</p>
-						<p className='text-2xl text-yellow-700'>{exp?.arrow}</p>
+						<div className='sm:h-[14rem] h-[16rem] w-2 bg-slate-900 absolute left-5 -z-10' />
+						<p className='sm:text-3xl text-2xl bg-white/60 p-2 w-14  rounded-full border-2 border-yellow-700 flex  shadow-amber-700 shadow-lg '>{exp?.bag}</p>
+						<p className='sm:text-2xl text-xl text-yellow-700'>{exp?.arrow}</p>
 						</div>
-						<div className="flex flex-col bg-yellow-800 w-3/4 items-start gap-2 p-4 rounded-2xl">
-							<h2 className='text-2xl font-semibold'>{exp?.title}</h2>
-							<h3 className='text-xl font-medium'>{exp?.role}</h3>
-							<p className='text-xl'>{exp?.period}</p>
+						<div className="flex flex-col bg-yellow-800 sm:w-3/4 w-2/3 items-start gap-2 p-4 rounded-2xl">
+							<h2 className='sm:text-2xl text-lg font-semibold'>{exp?.title}</h2>
+							<h3 className='sm:text-xl text-sm font-medium'>{exp?.role}</h3>
+							<p className='sm:text-xl text-sm'>{exp?.period}</p>
 						</div>
 					</div>
 					)

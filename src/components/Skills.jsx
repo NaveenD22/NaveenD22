@@ -18,10 +18,10 @@ const Skills = () => {
 					{SkillsContent?.map((skill, i) => {
 						return (
 							<div className="flex w-[38rem] justify-between items-center bg-white/80 p-2 rounded-3xl sm:p-4 h-32" key={i}>
-								<p className='text-5xl'>{skill?.icon}</p>
-								<div className="flex flex-col w-3/4 gap-2">
-									<h1 className='sm:text-xl text-lg font-bold'>{skill?.title}</h1>
-									<p className='sm:text-lg text-sm'>{skill?.des}</p>
+								<p className='sm:text-5xl text-2xl'>{skill?.icon}</p>
+								<div className="flex flex-col w-3/4 sm:gap-2">
+									<h1 className='sm:text-xl text-sm font-bold'>{skill?.title}</h1>
+									<p className='sm:text-lg text-xs'>{skill?.des}</p>
 								</div>
 								<p className='text-xl cursor-pointer
 								shadow-red-700 shadow-2xl'
@@ -34,16 +34,16 @@ const Skills = () => {
 					})}
 
 				</div>
-				{showInfo ? <div className="flex flex-col h-3/5 sm:1/2 w-3/4    p-4 bg-black text-white font-medium absolute inset-0 m-auto gap-10">
+				{showInfo ? <div className="flex flex-col sm:h-3/5 h-1/3 overflow-y-auto sm:1/2 w-3/4  p-4 bg-black text-white font-medium absolute inset-0 m-auto sm:gap-10 gap-2">
 					<div className="flex justify-between p-2">
-						<p className='text-5xl'>{info?.icon}</p>
-						<h1 className='text-3xl'>{info?.title}</h1>
-						<p className='text-2xl cursor-pointer'
+						<p className='sm:text-5xl text-xl'>{info?.icon}</p>
+						<h1 className='sm:text-3xl text-lg'>{info?.title}</h1>
+						<p className='sm:text-2xl text-lg cursor-pointer'
 						onClick={()=>setShowInfo(false)}
 						
 						><GiCrossMark /></p>
 					</div>
-					<p className='text-xl'>
+					<p className='sm:text-xl text-sm'>
 						<div className='flex flex-col gap-4'>
 							{info?.des2?.map((des,i)=>{
 								return(
