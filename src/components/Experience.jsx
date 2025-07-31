@@ -5,22 +5,22 @@ import { ExperiencContent } from './constants/constants'
 
 const Experience = () => {
 	return (
-		<div className='gap-14 bg-black/20 text-center sm:p-6 p-2 py-14  flex flex-col justify-between items-end' id="Experience">
+		<div className='gap-14 bg-black/20 sm:text-center sm:p-6 p-2 py-14  flex flex-col justify-between items-end' id="Experience">
 			
 			<div className="flex w-full justify-center items-center gap-2 ">
 				<p className='text-3xl'><FaWrench /></p>
 				<h1 className='text-4xl font-bold'>Experience</h1>
 			</div>
 			<div className="flex-col-reverse gap-20 flex sm:flex-row  w-full justify-between items-center">
-	<div className="flex flex-col gap-10 sm:w-2/3 items-center p-10 justify-center ">
-  <h2 className='text-3xl font-medium '>Why Hire Me as a Lead?</h2>
-  <ul className='space-y-6 text-lg sm:text-2xl font-normal list-decimal  p-4 '>
-    <li className='bg-gray-400 p-2 '>I lead teams to deliver SEO-friendly applications at scale, optimizing for search engine performance.</li>
-    <li className='bg-gray-400 p-2 '>Enforce development with clean, maintainable code standards across projects.</li>
-    <li className='bg-gray-400 p-2 '>Stay updated on the latest features of React.js, Next.js, and AWS, guiding teams to adopt cutting-edge technologies.</li>
-    <li className='bg-gray-400 p-2 '>Oversee responsive, mobile-first designs, ensuring cross-platform compatibility under my leadership.</li>
-    <li className='bg-gray-400 p-2 '>Quickly grasp new challenges and mentor teams to enhance their technical and problem-solving skills.</li>
-    <li className='bg-gray-400 p-2 '>Align team efforts with company vision, driving product management strategies and agile workflows.</li>
+	<div className="flex flex-col sm:gap-10 gap-2 sm:w-2/3 items-center sm:p-10 p-2 justify-center ">
+  <h2 className='sm:text-3xl text-2xl font-medium '>Why Hire Me as a Lead?</h2>
+  <ul className='space-y-6 text-sm sm:text-2xl font-normal list-decimal  sm:p-4 p-1 '>
+    <li className='bg-gray-300 p-2 rounded-md '>I lead teams to deliver SEO-friendly applications at scale, optimizing for search engine performance.</li>
+    <li className='bg-gray-400 p-2 rounded-md '>Enforce development with clean, maintainable code standards across projects.</li>
+    <li className='bg-gray-400 p-2 rounded-md '>Stay updated on the latest features of React.js, Next.js, and AWS, guiding teams to adopt cutting-edge technologies.</li>
+    <li className='bg-gray-400 p-2 rounded-md '>Oversee responsive, mobile-first designs, ensuring cross-platform compatibility under my leadership.</li>
+    <li className='bg-gray-400 p-2 rounded-md '>Quickly grasp new challenges and mentor teams to enhance their technical and problem-solving skills.</li>
+    <li className='bg-gray-400 p-2 rounded-md '>Align team efforts with company vision, driving product management strategies and agile workflows.</li>
   </ul>
 </div>
 			<div className="flex flex-col gap-6 sm:w-1/2 ">

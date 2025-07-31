@@ -88,7 +88,7 @@ const Home = () => {
             About Me <span className='rounded-full bg-white p-1 text-black'><FaArrowDown /></span>
           </button>
         </a>
-        <div className='flex sm:gap-6 gap-4 absolute bottom-[4rem] sm:relative sm:mt-4 sm:bottom-0'>
+        <div className='flex sm:gap-6 gap-4 '>
           {HomeContents.map((pro, i) => (
             <a href={pro.link} key={i}>
               <button className='text-3xl rounded-full cursor-pointer hover:text-purple-700 social-icon'>

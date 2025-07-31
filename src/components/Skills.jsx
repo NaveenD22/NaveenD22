@@ -14,10 +14,10 @@ const Skills = () => {
 				<h1 className='text-4xl'>Skills & Abilities</h1>
 			</div>
 			<div className=" w-[90%] bg-black/40  h-full  rounded-xl sm:py-14 relative transition-all ease-in-out">
-				<div className="flex flex-wrap w-full p-2   h-full justify-center items-center sm:gap-6 gap-4">
+				<div className="flex flex-wrap w-full sm:p-2 p-1   h-full justify-center items-center sm:gap-6 gap-4">
 					{SkillsContent?.map((skill, i) => {
 						return (
-							<div className="flex w-[38rem] justify-between items-center bg-white/80 p-2 rounded-3xl sm:p-4 h-32" key={i}>
+							<div className="flex w-[38rem] justify-between items-center bg-white/80 p-2 rounded-3xl sm:p-4 sm:h-32 h-22" key={i}>
 								<p className='sm:text-5xl text-2xl'>{skill?.icon}</p>
 								<div className="flex flex-col w-3/4 sm:gap-2">
 									<h1 className='sm:text-xl text-sm font-bold'>{skill?.title}</h1>
