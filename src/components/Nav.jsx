@@ -56,9 +56,9 @@ const Nav = () => {
         {mobile ? <FaTimes onClick={() => setMobile(false)} /> : <FaBars onClick={() => setMobile(true)} />}
       </div>
       {mobile ? (
-        <div className='h-screen w-3/4 absolute top-24 right-0 bg-slate-900 animate-slowfade1 ease-in-out z-40'>
+        <div className='h-screen w-3/4 absolute sm:top-24 top-20 right-0 bg-slate-900 animate-slowfade1 ease-in-out z-40'>
           {NavLinks.map((link, i) => (
-            <div className='flex text-white text-3xl w-full p-4 gap-4 mb-6 items-center' key={i}>
+            <div className='flex text-white sm:text-3xl text-xl w-full p-4 gap-4 mb-6 items-center' key={i}>
               <p>{link.icons}</p>
               <a
                 href={link?.Links}

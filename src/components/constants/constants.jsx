@@ -205,7 +205,7 @@ export const SkillsContent = [
   },
   {
     icon: <FaSketch />,
-    title: "Frontend Architecture and Design Patterns",
+    title: "Architectures and Design Patterns",
     des: "Skilled in component structure, microfrontends, and state management patterns",
     arrow: <FaArrowRight />,
     des2: [

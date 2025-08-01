@@ -82,7 +82,7 @@ const Home = () => {
   return (
     <div
       ref={containerRef}
-      className='bg-black/20 p-4 sm:p-6 flex flex-col sm:flex-row sm:justify-around min-h-screen items-center'
+      className='bg-black/20 p-4 sm:p-6 flex flex-col sm:flex-row justify-around min-h-screen items-center'
       id='Home'
     >
       <div className='flex flex-col gap-5 sm:gap-14 mt-10 sm:mt-14'>
@@ -100,7 +100,7 @@ const Home = () => {
             About Me <span className='rounded-full bg-white p-1 text-black'><FaArrowDown /></span>
           </button>
         </a>
-        <div className='flex gap-4 sm:gap-6'>
+        <div className='flex gap-6'>
           {HomeContents.map((pro, i) => (
             <a
               href={pro.link}
@@ -119,7 +119,7 @@ const Home = () => {
         <img
           src={avatar}
           alt='bitMoji'
-          className='h-[15rem] sm:h-[30rem] rounded-3xl main-image'
+          className='h-[20rem] sm:h-[30rem] rounded-3xl main-image'
         />
       </div>
     </div>
