@@ -25,7 +25,7 @@ const Footer = () => {
 						<h2 className='text-3xl font-semibold'>Quick Link's</h2>
 						{NavLinks.map((link, i) => {
 							return (
-								<div className="flex  text-2xl w-full p-2 gap-2  items-center" key={i}>
+								<div className="flex  text-2xl w-full p-2 gap-2  items-center" key={link.title}>
 									<p className='text-amber-600'><FaArrowRight /></p>
 									<a href={link?.Links} className='hover:text-white transition-all ease-in-out'>
 										<h2>{link.title}</h2>

@@ -67,16 +67,22 @@ export const HomeContents = [
     icon: <FaLinkedinIn />,
     link: "https://www.linkedin.com/in/naveen-dudhyal-ba122a22a",
   },
-  {
-    title: "Twitter",
-    icon: <FaTwitter />,
-    link: "",
+    {
+    title: "GitHub",
+    icon: <FaGithub />,
+    link: "https://github.com/NaveenD22",
   },
   {
     title: "Email",
     icon: <FaEnvelope />,
     link: "mailto:dinaveen4018@gmail.com?subject=subject text",
   },
+  {
+    title: "Twitter",
+    icon: <FaTwitter />,
+    link: "",
+  },
+  
   {
     title: "Telegram",
     icon: <FaTelegramPlane />,
@@ -87,11 +93,7 @@ export const HomeContents = [
     icon: <FaInstagram />,
     link: "https://www.instagram.com/navin_d22?r=nametag",
   },
-  {
-    title: "GitHub",
-    icon: <FaGithub />,
-    link: "https://github.com/NaveenD22",
-  },
+
 ];
 export const AboutMeContents = {
   icon: avatar,
