@@ -36,7 +36,7 @@ const Nav = () => {
     <div
       ref={navRef}
       id='header'
-      className='Nav flex justify-between items-center h-24 fixed top-0 w-full p-4 lg:px-32 bg-white/70 z-50 shadow-lg'
+      className='Nav flex justify-between items-center sm:h-24 h-20 fixed top-0 w-[100vw] p-4 lg:px-32 bg-white/70 z-50 shadow-lg'
     >
       <a href='#Home'>
         <div className='flex items-center gap-1 relative justify-center nav-item'>

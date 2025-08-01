@@ -10,74 +10,83 @@ const Experience = () => {
   const containerRef = useRef(null);
   const experienceItemsRef = useRef([]);
 
-  // Ensure refs are assigned correctly
   const setExperienceItemRef = (el, index) => {
     experienceItemsRef.current[index] = el;
   };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate title
-      gsap.fromTo(
-        '.experience-title',
-        { x: -200, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top 90%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
+      const mm = gsap.matchMedia();
 
-      // Animate "Why Me?" section
-      gsap.fromTo(
-        '.experience-why',
-        { x: -200, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.experience-why',
-            start: 'top 90%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
+      mm.add({
+        isDesktop: "(min-width: 640px)",
+        isMobile: "(max-width: 639px)",
+      }, (context) => {
+        const { isDesktop, isMobile } = context.conditions;
 
-      // Animate each timeline item
-      experienceItemsRef.current.forEach((el, i) => {
-        if (el) {
-          gsap.fromTo(
-            el,
-            { y: 100, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 1,
-              ease: 'power2.out',
-              delay: i * 0.2,
-              scrollTrigger: {
-                trigger: el,
-                start: 'top 90%',
-                toggleActions: 'play none none reverse',
-              },
-            }
-          );
-        }
+        // Animate title
+        gsap.fromTo(
+          '.experience-title',
+          { x: isDesktop ? "-20%" : "-10%", opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: 'top 90%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+
+        // Animate "Why Me?" section
+        gsap.fromTo(
+          '.experience-why',
+          { x: isDesktop ? "-20%" : "-10%", opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.experience-why',
+              start: 'top 90%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+
+        // Animate each timeline item
+        experienceItemsRef.current.forEach((el, i) => {
+          if (el) {
+            gsap.fromTo(
+              el,
+              { y: isDesktop ? 100 : 50, opacity: 0 },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: 'power2.out',
+                delay: i * 0.2,
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 90%',
+                  toggleActions: 'play none none reverse',
+                },
+              }
+            );
+          }
+        });
       });
+
+      return () => mm.revert();
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
-  // Fallback if ExperiencContent is empty
   if (!ExperiencContent || ExperiencContent.length === 0) {
     return <div>No experience data available</div>;
   }
@@ -85,20 +94,17 @@ const Experience = () => {
   return (
     <div
       ref={containerRef}
-      className="gap-14 bg-black/20 sm:text-center sm:p-6 p-2 py-14 flex flex-col justify-between items-end"
+      className="gap-10 bg-black/20 text-center p-4 sm:p-6 py-10 flex flex-col justify-between items-center"
       id="Experience"
     >
       <div className="flex w-full justify-center items-center gap-2 experience-title">
-        <p className="text-3xl">
-          <FaWrench />
-        </p>
-        <h1 className="text-4xl font-bold">Experience</h1>
+        <p className="text-2xl sm:text-3xl"><FaWrench /></p>
+        <h1 className="text-2xl sm:text-4xl font-bold">Experience</h1>
       </div>
-
-      <div className="flex-col-reverse gap-20 flex sm:flex-row w-full justify-between items-center">
-        <div className="flex flex-col sm:gap-10 gap-2 sm:w-2/3 items-center sm:p-10 p-2 justify-center experience-why">
-          <h2 className="sm:text-3xl text-2xl font-medium">Why Me?</h2>
-          <ul className="space-y-6 text-sm sm:text-2xl font-normal list-decimal sm:p-4 p-1">
+      <div className="flex flex-col sm:flex-row gap-10 w-full justify-between items-center">
+        <div className="flex flex-col gap-6 sm:gap-10 w-full sm:w-2/3 items-center p-2 sm:p-10 justify-center experience-why">
+          <h2 className="text-xl sm:text-3xl font-medium">Why Me?</h2>
+          <ul className="space-y-4 text-xs sm:text-xl font-normal list-decimal p-2 sm:p-4">
             <li className="bg-gray-300 p-2 rounded-md">
               Enforce development with clean, maintainable code standards across projects.
             </li>
@@ -119,24 +125,24 @@ const Experience = () => {
             </li>
           </ul>
         </div>
-        <div className="flex flex-col gap-6 sm:w-1/2">
+        <div className="flex flex-col gap-6 w-full sm:w-1/2">
           {ExperiencContent.map((exp, i) => (
             <div
-              className="flex w-full sm:justify-start justify-center items-center"
+              className="flex w-full justify-center sm:justify-start items-center"
               key={i}
               ref={(el) => setExperienceItemRef(el, i)}
             >
               <div className="flex items-center justify-center relative">
-                <div className="sm:h-[14rem] h-[16rem] w-2 bg-slate-900 absolute left-5 -z-10" />
-                <p className="sm:text-3xl text-2xl bg-white/60 p-2 w-14 rounded-full border-2 border-yellow-700 flex shadow-amber-700 shadow-lg">
+                <div className="h-[12rem] sm:h-[14rem] w-2 bg-slate-900 absolute left-5 -z-10" />
+                <p className="text-xl sm:text-3xl bg-white/60 p-2 w-12 sm:w-14 rounded-full border-2 border-yellow-700 flex shadow-amber-700 shadow-lg">
                   {exp?.bag}
                 </p>
-                <p className="sm:text-2xl text-xl text-yellow-700">{exp?.arrow}</p>
+                <p className="text-xl sm:text-2xl text-yellow-700">{exp?.arrow}</p>
               </div>
-              <div className="flex flex-col bg-yellow-800 sm:w-3/4 w-2/3 items-start gap-2 p-4 rounded-2xl">
-                <h2 className="sm:text-2xl text-lg font-semibold">{exp?.title}</h2>
-                <h3 className="sm:text-xl text-sm font-medium">{exp?.role}</h3>
-                <p className="sm:text-xl text-sm">{exp?.period}</p>
+              <div className="flex flex-col bg-yellow-800 w-2/3 sm:w-3/4 items-start gap-2 p-4 rounded-2xl">
+                <h2 className="text-base sm:text-2xl font-semibold">{exp?.title}</h2>
+                <h3 className="text-sm sm:text-xl font-medium">{exp?.role}</h3>
+                <p className="text-sm sm:text-xl">{exp?.period}</p>
               </div>
             </div>
           ))}
