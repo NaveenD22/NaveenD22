@@ -127,9 +127,9 @@ const Home = () => {
             React.js: Built 20+ responsive UIs, cutting load times by 30%.
           </span>
         </p>
-        <a href="#Hire">
+        <a href="#About">
           <button className="bg-indigo-900 font-semibold flex p-2 sm:p-4 gap-2 items-center rounded-3xl w-36 sm:w-40 justify-center text-white shadow-black/80 shadow-xl text-base sm:text-xl text-line focus:outline-none focus:ring-2 focus:ring-indigo-700">
-            Hire Me <span className="rounded-full bg-white p-1 text-black"><FaArrowDown /></span>
+            About Me <span className="rounded-full bg-white p-1 text-black"><FaArrowDown /></span>
           </button>
         </a>
         <div className="flex gap-4 sm:gap-6">
