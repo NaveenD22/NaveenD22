@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 
-import {Contact, Experience, Footer, GoToTop, Home, Info, Nav, Projects, Skills} from './components'
+import {Contact, Experience, Footer, GoToTop, Home, Info, Nav, Projects, Skills, Testimonials} from './components'
 
 function App() {
 
@@ -22,7 +22,8 @@ function App() {
       <Home/>
       <Info/>
       <Skills/>
-      <Projects/> 
+      <Projects/>
+      <Testimonials/> 
       <Experience/>
       <Contact/>
       <GoToTop/>

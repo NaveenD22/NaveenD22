@@ -84,13 +84,13 @@ const Skills = () => {
     <div
       ref={containerRef}
       id="Skills"
-      className="bg-black/30 flex flex-col justify-between w-full items-center gap-6 py-10"
+      className="bg-black/20 flex flex-col justify-between w-full items-center gap-6 py-10"
     >
       <div className="flex gap-2 w-full items-center justify-center font-medium skills-title">
         <p className="text-2xl sm:text-4xl"><FaSketch /></p>
         <h1 className="text-2xl sm:text-4xl">Skills & Abilities</h1>
       </div>
-      <div className="w-[95%] sm:w-[90%] bg-black/40 rounded-xl py-8 sm:py-14 relative">
+      <div className="w-[95%] sm:w-[90%] rounded-xl py-8 sm:py-14 relative">
         <div className="flex flex-wrap w-full p-2 sm:p-4 justify-center items-center gap-4 sm:gap-6">
           {SkillsContent.map((skill, i) => (
             <div

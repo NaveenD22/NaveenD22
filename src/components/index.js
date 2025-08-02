@@ -7,6 +7,7 @@ import Experience from './Experience'
 import Contact from './Contact'
 import Footer from './Footer'
 import GoToTop from './GoToTop'
+import Testimonials from './Testimonials'
 
 export {
 Nav,
@@ -17,5 +18,6 @@ Experience,
 Projects,
 Contact,
 GoToTop,
-Footer
+Footer,
+Testimonials
 }

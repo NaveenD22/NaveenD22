@@ -96,7 +96,7 @@ const Projects = () => {
                 ref={(el) => setProjectItemRef(el, i)}
               >
                 <div className="flex flex-col text-center relative w-full">
-                  <div className="w-full h-[12rem] sm:h-[20rem] overflow-hidden rounded-t-xl">
+                  <div className="w-full h-[10rem] sm:h-[20rem] overflow-hidden rounded-t-xl">
                     <img src={project.icon} alt={project.title} className="w-full h-full object-cover" />
                   </div>
                   <h1 className="text-base sm:text-3xl font-semibold w-full bg-yellow-500 p-1 rounded-b-xl">
