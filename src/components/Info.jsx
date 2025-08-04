@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { AboutMeContents } from './constants/constants';
 import { FaCode, FaArrowDown } from 'react-icons/fa';
 import { GoPerson } from 'react-icons/go';
-import pdf from '../assets/Naveen_D_CV.pdf';
+import pdf from '../assets/Naveen-Dudhyal-CV.pdf';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
