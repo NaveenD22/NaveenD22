@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@/components/*": ["components/*"],
+      "@/app/*": ["app/*"]
+    }
+  },
+  "include": ["app/**/*", "components/**/*"],
+  "exclude": ["node_modules", ".next"]
+}

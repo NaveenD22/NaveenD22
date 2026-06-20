@@ -1,27 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    './app/**/*.{js,jsx,ts,tsx,mdx}',
+    './components/**/*.{js,jsx,ts,tsx,mdx}',
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
       animation: {
         slideup: 'slideup 1s ease-in-out',
-        
         slidedown: 'slidedown 1s ease-in-out',
         slideleft: 'slideleft 1s ease-in-out',
         slideright: 'slideright 1s ease-in-out',
         wave: 'wave 1.2s linear infinite',
         slowfade: 'slowfade 2.4s ease-in-out',
-        slowfade1: 'slowfade 0.5s ease-in-out',
       },
       keyframes: {
-       
         slowfade: {
-          from: { opacity: 0 },
-          to: { opacity: 1 },
-        },
-        slowfade1: {
           from: { opacity: 0 },
           to: { opacity: 1 },
         },
@@ -50,4 +47,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
