@@ -34,19 +34,21 @@ const Home = () => {
 
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
+
+      // ── Always-on: intro reveal, counters, rotating role chip ────────────
       mm.add(
-        { isDesktop: '(min-width: 768px)', reduceMotion: '(prefers-reduced-motion: reduce)' },
+        { reduceMotion: '(prefers-reduced-motion: reduce)' },
         (context) => {
-          const { isDesktop, reduceMotion } = context.conditions;
-          if (reduceMotion) return;
+          const { reduceMotion } = context.conditions;
+          if (reduceMotion) return; // .char is visible by default — nothing to do
 
           // ── Intro timeline ────────────────────────────────────────────────
           const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
 
           tl.from('.hero-eyebrow', { y: 16, opacity: 0, duration: 0.7 })
-            .to('.hero-headline .char', {
-              y: 0,
-              opacity: 1,
+            .from('.hero-headline .char', {
+              yPercent: 110,
+              opacity: 0,
               duration: 1,
               ease: 'expo.out',
               stagger: { each: 0.022, from: 'start' },
@@ -57,24 +59,6 @@ const Home = () => {
             .from('.trust-badge', { y: 12, opacity: 0, duration: 0.4, stagger: 0.05 }, '-=0.3')
             .from(imageWrapRef.current, { y: 30, opacity: 0, scale: 0.96, duration: 1 }, '-=1.1')
             .from('.hero-stat', { y: 16, opacity: 0, duration: 0.5, stagger: 0.07 }, '-=0.5');
-
-          // ── Animated counters ─────────────────────────────────────────────
-          document.querySelectorAll('.hero-stat-num').forEach((el) => {
-            const raw = el.dataset.value || '';
-            const num = parseFloat(raw.replace(/[^\d.]/g, '')) || 0;
-            const suffix = raw.replace(/[\d.]/g, '');
-            const obj = { n: 0 };
-            gsap.to(obj, {
-              n: num,
-              duration: 2,
-              ease: 'power2.out',
-              delay: 1.2,
-              onUpdate: () => {
-                const display = num >= 100 ? Math.round(obj.n) : obj.n.toFixed(num % 1 ? 1 : 0);
-                el.textContent = `${display}${suffix}`;
-              },
-            });
-          });
 
           // ── Rotating role chip ───────────────────────────────────────────
           let i = 0;
@@ -90,28 +74,36 @@ const Home = () => {
               { y: -16, opacity: 0 },
               { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }
             );
+        }
+      );
 
-          // ── Parallax orbs + image on scroll ───────────────────────────────
-          if (isDesktop) {
-            gsap.to('.orb-a', {
-              yPercent: -25,
-              ease: 'none',
-              scrollTrigger: { trigger: containerRef.current, start: 'top top', end: 'bottom top', scrub: true },
-            });
-            gsap.to('.orb-b', {
-              yPercent: 30,
-              ease: 'none',
-              scrollTrigger: { trigger: containerRef.current, start: 'top top', end: 'bottom top', scrub: true },
-            });
-            gsap.to(imageWrapRef.current, {
-              yPercent: -8,
-              ease: 'none',
-              scrollTrigger: { trigger: containerRef.current, start: 'top top', end: 'bottom top', scrub: 0.5 },
-            });
-          }
+      // ── Desktop-only: parallax orbs/image + pointer tilt ─────────────────
+      mm.add(
+        {
+          isDesktop: '(min-width: 768px)',
+          reduceMotion: '(prefers-reduced-motion: reduce)',
+        },
+        (context) => {
+          const { isDesktop, reduceMotion } = context.conditions;
+          if (!isDesktop || reduceMotion) return;
 
-          // ── 3D pointer tilt on avatar (desktop only) ──────────────────────
-          if (isDesktop && imageWrapRef.current) {
+          gsap.to('.orb-a', {
+            yPercent: -25,
+            ease: 'none',
+            scrollTrigger: { trigger: containerRef.current, start: 'top top', end: 'bottom top', scrub: true },
+          });
+          gsap.to('.orb-b', {
+            yPercent: 30,
+            ease: 'none',
+            scrollTrigger: { trigger: containerRef.current, start: 'top top', end: 'bottom top', scrub: true },
+          });
+          gsap.to(imageWrapRef.current, {
+            yPercent: -8,
+            ease: 'none',
+            scrollTrigger: { trigger: containerRef.current, start: 'top top', end: 'bottom top', scrub: 0.5 },
+          });
+
+          if (imageWrapRef.current) {
             const el = imageWrapRef.current;
             const rxTo = gsap.quickTo(el, 'rotationX', { duration: 0.4, ease: 'power3' });
             const ryTo = gsap.quickTo(el, 'rotationY', { duration: 0.4, ease: 'power3' });
@@ -127,6 +119,10 @@ const Home = () => {
             const onLeave = () => { rxTo(0); ryTo(0); };
             el.addEventListener('mousemove', onMove);
             el.addEventListener('mouseleave', onLeave);
+            return () => {
+              el.removeEventListener('mousemove', onMove);
+              el.removeEventListener('mouseleave', onLeave);
+            };
           }
         }
       );
@@ -134,6 +130,58 @@ const Home = () => {
     }, containerRef);
 
     return () => ctx.revert();
+  }, []);
+
+  // Self-contained stat counters — independent of GSAP/context so they always
+  // reach their final value even if the intro timeline never runs.
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll('.hero-stat-num'));
+    if (!els.length) return;
+
+    const reduce =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const format = (n, num, suffix) => {
+      const display = num >= 100 ? Math.round(n) : n.toFixed(num % 1 ? 1 : 0);
+      return `${display}${suffix}`;
+    };
+
+    const animate = (el) => {
+      const raw = el.dataset.value || el.textContent || '';
+      const num = parseFloat(raw.replace(/[^\d.]/g, '')) || 0;
+      const suffix = raw.replace(/[\d.]/g, '');
+      if (reduce || num === 0) {
+        el.textContent = `${num}${suffix}`;
+        return;
+      }
+      const start = performance.now();
+      const duration = 1800;
+      const step = (now) => {
+        const t = Math.min(1, (now - start) / duration);
+        // easeOutCubic
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = format(num * eased, num, suffix);
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const started = new WeakSet();
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !started.has(entry.target)) {
+            started.add(entry.target);
+            animate(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
   }, []);
 
   // Duplicate stack for seamless marquee
@@ -274,7 +322,7 @@ const Home = () => {
                   className="hero-stat-num text-xl sm:text-2xl font-semibold text-white tabular-nums tracking-tight"
                   data-value={s.value}
                 >
-                  0
+                  {s.value}
                 </p>
                 <p className="text-[10px] text-white/45 mt-1 leading-tight">{s.label}</p>
               </div>
