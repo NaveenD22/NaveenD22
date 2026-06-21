@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg: #050608;
+  --surface: rgba(255, 255, 255, 0.025);
+  --border: rgba(255, 255, 255, 0.07);
+  --text: #ededee;
+  --text-dim: rgba(237, 237, 238, 0.6);
+  --text-mute: rgba(237, 237, 238, 0.4);
+  --accent: #22d3ee;
+  --accent-dim: rgba(34, 211, 238, 0.5);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -11,36 +22,35 @@
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #020617;
+    background-color: var(--bg);
+    color: var(--text);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
 
   ::selection {
-    background-color: rgba(217, 70, 239, 0.4);
+    background-color: rgba(34, 211, 238, 0.3);
     color: #fff;
   }
 }
 
 @layer utilities {
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #0f172a;
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #6366f1, #d946ef);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #818cf8, #f0abfc);
+    background: rgba(255, 255, 255, 0.18);
   }
 
-  .text-gradient {
-    background-image: linear-gradient(90deg, #fcd34d, #ec4899, #a855f7);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .text-accent {
+    color: var(--accent);
   }
 
   .line-clamp-3 {
@@ -50,10 +60,70 @@
     overflow: hidden;
   }
 
-  .bg-grid-dark {
+  .surface {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .bg-grid-faint {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 32px 32px;
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .hairline {
+    border-top: 1px solid var(--border);
+  }
+
+  /* Char-reveal */
+  .char {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  /* Custom cursor — hidden on touch */
+  @media (hover: hover) and (pointer: fine) {
+    body { cursor: none; }
+    a, button, input, textarea, [role="button"], details summary { cursor: none; }
+  }
+
+  /* Infinite marquee */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* 3D helpers — used by CubeCard and process flow */
+  .perspective-1200 {
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 }

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { ProjectsContent } from './constants/constants';
-import { FaPenNib, FaExternalLinkAlt, FaGithub, FaLock } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaLock } from 'react-icons/fa';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -14,34 +14,54 @@ const Projects = () => {
 
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
-      mm.add({ reduceMotion: '(prefers-reduced-motion: reduce)' }, (c) => {
-        if (c.conditions.reduceMotion) return;
+      mm.add(
+        { isDesktop: '(min-width: 768px)', reduceMotion: '(prefers-reduced-motion: reduce)' },
+        (c) => {
+          const { isDesktop, reduceMotion } = c.conditions;
+          if (reduceMotion) return;
 
-        gsap.fromTo(
-          '.projects-title',
-          { y: -20, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out',
-            scrollTrigger: { trigger: containerRef.current, start: 'top 85%', toggleActions: 'play none none reverse' },
-          }
-        );
+          gsap.fromTo(
+            '.pr-eyebrow, .pr-title, .pr-sub',
+            { y: 16, opacity: 0 },
+            {
+              y: 0, opacity: 1, duration: 0.9, ease: 'expo.out', stagger: 0.08,
+              scrollTrigger: { trigger: containerRef.current, start: 'top 85%', toggleActions: 'play none none reverse' },
+            }
+          );
 
-        gsap.fromTo(
-          '.project-card',
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            ease: 'power3.out',
-            stagger: 0.1,
-            scrollTrigger: { trigger: containerRef.current, start: 'top 80%', toggleActions: 'play none none reverse' },
+          gsap.fromTo(
+            '.project-card',
+            { y: 40, opacity: 0 },
+            {
+              y: 0, opacity: 1, duration: 0.8, ease: 'expo.out', stagger: 0.07,
+              scrollTrigger: { trigger: containerRef.current, start: 'top 75%', toggleActions: 'play none none reverse' },
+            }
+          );
+
+          // 3D tilt on project cards (desktop only)
+          if (isDesktop) {
+            document.querySelectorAll('.project-card').forEach((card) => {
+              const inner = card.querySelector('.tilt-inner');
+              if (!inner) return;
+              gsap.set(inner, { transformPerspective: 900, transformOrigin: 'center' });
+              const rxTo = gsap.quickTo(inner, 'rotationX', { duration: 0.4, ease: 'power3' });
+              const ryTo = gsap.quickTo(inner, 'rotationY', { duration: 0.4, ease: 'power3' });
+              const onMove = (e) => {
+                const r = card.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width - 0.5;
+                const y = (e.clientY - r.top) / r.height - 0.5;
+                rxTo(-y * 6);
+                ryTo(x * 8);
+                card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+                card.style.setProperty('--my', `${e.clientY - r.top}px`);
+              };
+              const onLeave = () => { rxTo(0); ryTo(0); };
+              card.addEventListener('mousemove', onMove);
+              card.addEventListener('mouseleave', onLeave);
+            });
           }
-        );
-      });
+        }
+      );
       return () => mm.revert();
     }, containerRef);
 
@@ -52,89 +72,84 @@ const Projects = () => {
     <section
       id="Projects"
       ref={containerRef}
-      className="relative py-16 sm:py-24 px-4 sm:px-10 bg-gradient-to-b from-slate-900 via-indigo-950 to-slate-950 text-white overflow-hidden"
+      className="relative py-24 sm:py-32 px-4 sm:px-10 bg-[#050608] text-white border-t border-white/[0.05] overflow-hidden"
     >
-      <div className="pointer-events-none absolute -top-20 right-1/4 w-80 h-80 rounded-full bg-fuchsia-600/20 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-cyan-500/20 blur-3xl" />
+      <div className="absolute inset-0 bg-grid-faint pointer-events-none opacity-40" />
 
       <div className="relative max-w-7xl mx-auto">
-        <div className="text-center projects-title">
-          <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-amber-300 font-semibold">Selected work</p>
-          <h2 className="text-3xl sm:text-5xl font-extrabold mt-2 inline-flex items-center gap-3">
-            <FaPenNib className="text-amber-300" /> Projects That Shipped
-          </h2>
-          <p className="text-white/70 mt-3 max-w-2xl mx-auto text-sm sm:text-base">
-            Real production work — not toy demos. Some are confidential, but the impact is real.
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 max-w-4xl">
+          <div>
+            <p className="pr-eyebrow text-[10px] sm:text-xs uppercase tracking-[0.35em] text-white/40 font-medium">
+              04 — Selected work
+            </p>
+            <h2 className="pr-title text-3xl sm:text-5xl font-semibold tracking-[-0.025em] mt-4">
+              Real production. <span className="text-white/40">Not toy demos.</span>
+            </h2>
+          </div>
+          <p className="pr-sub text-sm text-white/55 max-w-sm">
+            A snapshot of what I have shipped. Some are confidential — the impact is real.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mt-10 sm:mt-14">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-14">
           {ProjectsContent.map((p, i) => (
             <article
               key={i}
-              className="project-card group relative rounded-3xl overflow-hidden
-                         bg-white/5 border border-white/10 backdrop-blur-md
-                         hover:-translate-y-1 hover:border-fuchsia-400/40 transition-all duration-300 shadow-xl"
+              className="project-card group relative rounded-2xl overflow-hidden surface
+                         hover:border-white/15 transition-colors duration-500"
+              style={{
+                backgroundImage:
+                  'radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgba(34,211,238,0.05), transparent 60%)',
+              }}
             >
-              <div className="relative overflow-hidden h-44 sm:h-52">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={p.icon}
-                  alt={p.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
-                />
-                {p.confidential && (
-                  <span className="absolute top-3 left-3 inline-flex items-center gap-1 text-[10px] sm:text-xs font-bold
-                                   bg-amber-500/90 text-black px-2 py-1 rounded-full">
-                    <FaLock /> Confidential
-                  </span>
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
-              </div>
-
-              <div className="p-5 flex flex-col gap-3">
-                <h3 className="text-base sm:text-lg font-bold text-white">{p.title}</h3>
-                <p className="text-xs sm:text-sm text-white/75 leading-relaxed line-clamp-3">{p.des}</p>
-
-                <div className="flex flex-wrap gap-1.5">
-                  {p.tags?.map((t, idx) => (
-                    <span
-                      key={idx}
-                      className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full
-                                 bg-indigo-500/20 border border-indigo-400/30 text-indigo-200"
-                    >
-                      {t}
+              <div className="tilt-inner will-change-transform">
+                <div className="relative overflow-hidden h-48 sm:h-56">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={p.icon}
+                    alt={p.title}
+                    className="w-full h-full object-cover grayscale-[0.4] group-hover:grayscale-0
+                               group-hover:scale-105 transition-all duration-700"
+                    loading="lazy"
+                  />
+                  {p.confidential && (
+                    <span className="absolute top-3 left-3 inline-flex items-center gap-1 text-[10px] font-medium
+                                     bg-black/70 backdrop-blur text-white/80 px-2 py-1 rounded-full border border-white/10">
+                      <FaLock className="text-[8px]" /> Confidential
                     </span>
-                  ))}
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050608] via-[#050608]/30 to-transparent" />
                 </div>
 
-                <div className="flex items-center justify-between pt-2 mt-auto">
-                  {p.link && p.link !== '#' ? (
-                    <a
-                      href={p.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold
-                                 text-amber-300 hover:text-amber-200"
-                    >
-                      Live Demo <FaExternalLinkAlt />
-                    </a>
-                  ) : (
-                    <span className="text-xs text-white/50 italic">Private repo</span>
-                  )}
+                <div className="p-5 flex flex-col gap-3">
+                  <h3 className="text-base font-semibold tracking-tight">{p.title}</h3>
+                  <p className="text-xs text-white/55 leading-relaxed line-clamp-3">{p.des}</p>
 
-                  {p.code && p.code !== '#' && (
-                    <a
-                      href={p.code}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold
-                                 text-cyan-300 hover:text-cyan-200"
-                    >
-                      Source <FaGithub />
-                    </a>
-                  )}
+                  <div className="flex flex-wrap gap-1.5">
+                    {p.tags?.map((t, idx) => (
+                      <span
+                        key={idx}
+                        className="text-[10px] px-2 py-0.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-white/55"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center justify-between pt-2 border-t border-white/[0.05] mt-2">
+                    {p.link && p.link !== '#' ? (
+                      <a
+                        href={p.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-cyan-400 hover:text-cyan-300"
+                      >
+                        Live demo <FaExternalLinkAlt className="text-[10px]" />
+                      </a>
+                    ) : (
+                      <span className="text-xs text-white/35 italic">Private repo</span>
+                    )}
+                  </div>
                 </div>
               </div>
             </article>

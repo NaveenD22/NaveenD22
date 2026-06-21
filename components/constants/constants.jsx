@@ -58,11 +58,12 @@ const ASSETS = {
   azure: '/assets/Azure.webp',
 };
 
-export const RESUME_URL = '/Naveen-Dudhyal-CV.pdf';
+export const RESUME_URL = '/api/cv';
 export const HERO_AVATAR = ASSETS.avatar1;
 
 export const NavLinks = [
   { Links: '#Home', title: 'Home', icons: <FaHome />, description: 'Start here — meet your next full-stack partner' },
+  { Links: '#Process', title: 'Process', icons: <FaCogs />, description: 'How I work with clients — five steps, zero surprises' },
   { Links: '#About', title: 'About', icons: <GoPerson />, description: 'The story, the stack, the standards' },
   { Links: '#Services', title: 'Services', icons: <FaCogs />, description: 'What I build, ship and scale for clients' },
   { Links: '#Skills', title: 'Skills', icons: <FaSketch />, description: 'Full-stack, cloud and DevOps capabilities' },
@@ -73,11 +74,9 @@ export const NavLinks = [
 
 export const HomeContents = [
   { title: 'LinkedIn', icon: <FaLinkedinIn />, link: 'https://www.linkedin.com/in/naveen-dudhyal-ba122a22a', name: 'LinkedIn Profile' },
-  { title: 'GitHub', icon: <FaGithub />, link: 'https://github.com/NaveenD22', name: 'GitHub Portfolio' },
   { title: 'Email', icon: <FaEnvelope />, link: 'mailto:dinaveen4018@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20Full-Stack%20Engagement', name: 'Email Me' },
   { title: 'Twitter', icon: <FaTwitter />, link: 'https://twitter.com/NaveenDudhyal', name: 'Twitter Updates' },
   { title: 'Telegram', icon: <FaTelegramPlane />, link: 'https://t.me/NaveenDudhyal', name: 'Telegram Contact' },
-  { title: 'Instagram', icon: <FaInstagram />, link: 'https://www.instagram.com/navin_d22', name: 'Instagram Insights' },
 ];
 
 export const RotatingRoles = [
@@ -312,6 +311,33 @@ export const TechStack = [
 ];
 
 export const ProjectsContent = [
+    {
+    icon: ASSETS.propertyBuilder,
+    title: 'Property Management SaaS',
+    des: 'Multi-tenant tenant/lease management built with React, Node.js and Firebase — 35% faster lookups, role-based access.',
+    link: '#',
+    code: '#',
+    tags: ['React', 'Node.js', 'Firebase', 'RBAC'],
+    confidential: true,
+  },
+  {
+    icon: ASSETS.analytics,
+    title: 'Real-Time Analytics Dashboard',
+    des: 'React + Node.js dashboard on AWS (ECS, Lambda, CloudFront) — websocket streams and 20% faster refresh cycles.',
+    link: '#',
+    code: '#',
+    tags: ['React', 'Node.js', 'AWS', 'WebSockets'],
+    confidential: true,
+  },
+  {
+    icon: ASSETS.wearable,
+    title: 'Wearable Health Companion',
+    des: 'Cross-platform Flutter app syncing wearable data — 95% accurate metrics, deployed via Azure App Center and CI/CD.',
+    link: '#',
+    code: '#',
+    tags: ['Flutter', 'Azure', 'CI/CD', 'BLE'],
+    confidential: true,
+  },
   {
     icon: ASSETS.azure,
     title: 'Enterprise CMS Platform',
@@ -360,33 +386,7 @@ export const ProjectsContent = [
     code: '#',
     tags: ['React', 'Firebase', 'Auth', 'TMDB'],
   },
-  {
-    icon: ASSETS.propertyBuilder,
-    title: 'Property Management SaaS',
-    des: 'Multi-tenant tenant/lease management built with React, Node.js and Firebase — 35% faster lookups, role-based access.',
-    link: '#',
-    code: '#',
-    tags: ['React', 'Node.js', 'Firebase', 'RBAC'],
-    confidential: true,
-  },
-  {
-    icon: ASSETS.analytics,
-    title: 'Real-Time Analytics Dashboard',
-    des: 'React + Node.js dashboard on AWS (ECS, Lambda, CloudFront) — websocket streams and 20% faster refresh cycles.',
-    link: '#',
-    code: '#',
-    tags: ['React', 'Node.js', 'AWS', 'WebSockets'],
-    confidential: true,
-  },
-  {
-    icon: ASSETS.wearable,
-    title: 'Wearable Health Companion',
-    des: 'Cross-platform Flutter app syncing wearable data — 95% accurate metrics, deployed via Azure App Center and CI/CD.',
-    link: '#',
-    code: '#',
-    tags: ['Flutter', 'Azure', 'CI/CD', 'BLE'],
-    confidential: true,
-  },
+
 ];
 
 export const ExperienceContent = [

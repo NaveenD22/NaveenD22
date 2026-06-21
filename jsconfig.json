@@ -7,6 +7,6 @@
       "@/app/*": ["app/*"]
     }
   },
-  "include": ["app/**/*", "components/**/*"],
+  "include": ["app/**/*", "components/**/*", "lib/**/*"],
   "exclude": ["node_modules", ".next"]
 }

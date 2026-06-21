@@ -1,5 +1,6 @@
 export { default as Nav } from './Nav';
 export { default as Home } from './Home';
+export { default as Process } from './Process';
 export { default as Info } from './Info';
 export { default as Services } from './Services';
 export { default as Skills } from './Skills';
@@ -9,3 +10,7 @@ export { default as Testimonials } from './Testimonials';
 export { default as Contact } from './Contact';
 export { default as Footer } from './Footer';
 export { default as GoToTop } from './GoToTop';
+export { default as ScrollProgress } from './ScrollProgress';
+export { default as Cursor } from './Cursor';
+export { default as Magnetic } from './Magnetic';
+export { default as CubeCard } from './CubeCard';

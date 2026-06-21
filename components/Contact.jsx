@@ -15,6 +15,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FAQContent, AboutMeContents } from './constants/constants';
+import Magnetic from './Magnetic';
 
 const Contact = () => {
   const form = useRef();
@@ -48,13 +49,10 @@ const Contact = () => {
         if (c.conditions.reduceMotion) return;
 
         gsap.fromTo(
-          '.contact-title',
-          { y: -20, opacity: 0 },
+          '.ct-eyebrow, .ct-title, .ct-sub',
+          { y: 16, opacity: 0 },
           {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out',
+            y: 0, opacity: 1, duration: 0.9, ease: 'expo.out', stagger: 0.08,
             scrollTrigger: { trigger: containerRef.current, start: 'top 85%', toggleActions: 'play none none reverse' },
           }
         );
@@ -63,12 +61,8 @@ const Contact = () => {
           '.contact-card',
           { y: 30, opacity: 0 },
           {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out',
-            stagger: 0.12,
-            scrollTrigger: { trigger: containerRef.current, start: 'top 80%', toggleActions: 'play none none reverse' },
+            y: 0, opacity: 1, duration: 0.8, ease: 'expo.out', stagger: 0.08,
+            scrollTrigger: { trigger: containerRef.current, start: 'top 75%', toggleActions: 'play none none reverse' },
           }
         );
       });
@@ -84,142 +78,115 @@ const Contact = () => {
     { icon: <FaGlobeAmericas />, title: 'Worldwide remote', des: 'US, EU, UK, APAC, ME' },
   ];
 
+  const inputCls =
+    'bg-white/[0.02] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/30 ' +
+    'focus:outline-none focus:border-cyan-400/50 focus:bg-white/[0.04] transition-colors';
+
   return (
     <section
       id="Hire"
       ref={containerRef}
-      className="relative py-16 sm:py-24 px-4 sm:px-10 bg-gradient-to-b from-slate-50 to-indigo-100 overflow-hidden"
+      className="relative py-24 sm:py-32 px-4 sm:px-10 bg-[#050608] text-white border-t border-white/[0.05] overflow-hidden"
     >
-      <div className="pointer-events-none absolute top-10 right-10 w-72 h-72 rounded-full bg-fuchsia-300/30 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-10 left-10 w-72 h-72 rounded-full bg-indigo-300/30 blur-3xl" />
+      <div className="absolute inset-0 bg-grid-faint pointer-events-none opacity-50" />
 
       <div className="relative max-w-6xl mx-auto">
-        <div className="text-center contact-title">
-          <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-fuchsia-600 font-semibold">
-            Let us build together
+        <div className="max-w-2xl">
+          <p className="ct-eyebrow text-[10px] sm:text-xs uppercase tracking-[0.35em] text-white/40 font-medium">
+            07 — Let&rsquo;s build
           </p>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 mt-2">
-            Hire <span className="bg-gradient-to-r from-indigo-600 to-fuchsia-600 bg-clip-text text-transparent">Me</span>
+          <h2 className="ct-title text-3xl sm:text-5xl font-semibold tracking-[-0.025em] mt-4">
+            Start a project. <span className="text-white/40">Get a real reply.</span>
           </h2>
-          <p className="text-slate-600 mt-3 max-w-2xl mx-auto text-sm sm:text-base">
-            Tell me about your product — a new build, a rescue mission, a migration to AWS/Azure, a CI/CD overhaul. I respond within hours.
+          <p className="ct-sub text-sm sm:text-base text-white/55 mt-4 leading-relaxed">
+            New build, rescue mission, migration to AWS/Azure, CI/CD overhaul — tell me what you need. I respond within hours.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-3 sm:gap-4 mt-10">
+        <div className="grid sm:grid-cols-3 gap-px mt-12 surface rounded-2xl overflow-hidden">
           {trustItems.map((t, i) => (
-            <div
-              key={i}
-              className="contact-card flex items-center gap-3 p-4 rounded-2xl bg-white shadow-md border border-indigo-100"
-            >
-              <div className="h-10 w-10 rounded-xl flex items-center justify-center text-lg
-                              bg-gradient-to-br from-indigo-600 to-fuchsia-600 text-white">
+            <div key={i} className="contact-card flex items-center gap-3 p-5 bg-[#070809]">
+              <div className="h-9 w-9 rounded-lg flex items-center justify-center text-sm
+                              bg-white/[0.03] border border-white/[0.08] text-cyan-400">
                 {t.icon}
               </div>
               <div>
-                <p className="text-sm font-bold text-slate-900">{t.title}</p>
-                <p className="text-xs text-slate-600">{t.des}</p>
+                <p className="text-sm font-medium tracking-tight">{t.title}</p>
+                <p className="text-xs text-white/45 mt-0.5">{t.des}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 mt-8">
+        <div className="grid lg:grid-cols-5 gap-5 mt-6">
           <form
             ref={form}
             onSubmit={sendEmail}
-            className="lg:col-span-3 contact-card bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-100 flex flex-col gap-4"
+            className="lg:col-span-3 contact-card surface rounded-2xl p-6 sm:p-8 flex flex-col gap-4"
           >
-            <h3 className="text-lg sm:text-2xl font-bold text-slate-900">Start a conversation</h3>
+            <h3 className="text-lg font-semibold tracking-tight">Tell me about your product</h3>
 
-            <div className="grid sm:grid-cols-2 gap-4">
-              <input
-                type="text"
-                required
-                name="from_name"
-                placeholder="Your name *"
-                aria-label="Your name"
-                className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm sm:text-base
-                           focus:outline-none focus:ring-2 focus:ring-indigo-400"
-              />
-              <input
-                type="email"
-                required
-                name="user_email"
-                placeholder="Your email *"
-                aria-label="Your email"
-                className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm sm:text-base
-                           focus:outline-none focus:ring-2 focus:ring-indigo-400"
-              />
+            <div className="grid sm:grid-cols-2 gap-3">
+              <input type="text" required name="from_name" placeholder="Your name *" aria-label="Your name" className={inputCls} />
+              <input type="email" required name="user_email" placeholder="Your email *" aria-label="Your email" className={inputCls} />
             </div>
-            <input
-              type="tel"
-              name="user_phone"
-              placeholder="Phone / WhatsApp (optional)"
-              aria-label="Phone"
-              className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm sm:text-base
-                         focus:outline-none focus:ring-2 focus:ring-indigo-400"
-            />
+            <input type="tel" name="user_phone" placeholder="Phone / WhatsApp (optional)" aria-label="Phone" className={inputCls} />
             <textarea
               required
               name="message"
               rows="5"
-              placeholder="Tell me about your project, timeline and budget…"
+              placeholder="Project, timeline, budget…"
               aria-label="Your message"
-              className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm sm:text-base
-                         focus:outline-none focus:ring-2 focus:ring-indigo-400 resize-y"
+              className={`${inputCls} resize-y`}
             />
 
-            <button
-              type="submit"
-              disabled={submitting}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full
-                         bg-gradient-to-r from-indigo-600 via-fuchsia-600 to-pink-500 text-white
-                         font-semibold shadow-lg shadow-indigo-300 hover:scale-[1.02] transition-transform
-                         disabled:opacity-60 disabled:cursor-not-allowed
-                         focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
-            >
-              {submitting ? 'Sending…' : 'Send Message'} <FaTelegramPlane />
-            </button>
+            <Magnetic strength={0.25}>
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-medium
+                           bg-white text-slate-950 hover:bg-cyan-400 transition-colors duration-300
+                           disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {submitting ? 'Sending…' : 'Send message'} <FaTelegramPlane />
+              </button>
+            </Magnetic>
 
-            <p className="text-xs text-slate-500 inline-flex items-center gap-1.5">
-              <FaCheckCircle className="text-emerald-500" /> Your message is private. No spam, ever.
+            <p className="text-xs text-white/40 inline-flex items-center gap-1.5">
+              <FaCheckCircle className="text-cyan-400" /> Your message is private. No spam, ever.
             </p>
           </form>
 
-          <div className="lg:col-span-2 flex flex-col gap-4">
-            <div className="contact-card bg-gradient-to-br from-indigo-900 via-fuchsia-900 to-slate-900 text-white rounded-3xl p-6 shadow-xl">
-              <h3 className="text-lg font-bold">Prefer direct contact?</h3>
+          <div className="lg:col-span-2 flex flex-col gap-5">
+            <div className="contact-card surface rounded-2xl p-6">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-medium">Prefer direct?</p>
               <a
                 href={`mailto:${AboutMeContents.email}?subject=Project%20Inquiry`}
-                className="mt-4 flex items-center gap-3 text-sm sm:text-base hover:text-amber-300 break-all"
+                className="mt-4 flex items-center gap-2.5 text-sm text-white/75 hover:text-cyan-400 break-all transition-colors"
               >
-                <FaEnvelope className="text-amber-300 flex-shrink-0" /> {AboutMeContents.email}
+                <FaEnvelope className="text-cyan-400 flex-shrink-0 text-xs" /> {AboutMeContents.email}
               </a>
               <a
                 href={`tel:${AboutMeContents.phone.replace(/[^+\d]/g, '')}`}
-                className="mt-3 flex items-center gap-3 text-sm sm:text-base hover:text-amber-300"
+                className="mt-2 flex items-center gap-2.5 text-sm text-white/75 hover:text-cyan-400 transition-colors"
               >
-                <FaPhone className="text-amber-300 flex-shrink-0" /> {AboutMeContents.phone}
+                <FaPhone className="text-cyan-400 flex-shrink-0 text-xs" /> {AboutMeContents.phone}
               </a>
-              <p className="mt-4 text-xs text-white/70">
-                Based in Bangalore, India — happy to work in your timezone.
+              <p className="mt-4 text-xs text-white/40">
+                Based in Bangalore — happy to work in your timezone.
               </p>
             </div>
 
-            <div className="contact-card bg-white rounded-3xl p-6 shadow-xl border border-indigo-100">
-              <h3 className="text-lg font-bold text-slate-900">FAQ</h3>
-              <div className="mt-3 space-y-3">
+            <div className="contact-card surface rounded-2xl p-6">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-medium">FAQ</p>
+              <div className="mt-4 space-y-2">
                 {FAQContent.map((f, i) => (
-                  <details
-                    key={i}
-                    className="group rounded-xl border border-slate-200 p-3 open:bg-indigo-50"
-                  >
-                    <summary className="cursor-pointer text-sm font-semibold text-slate-800 list-none flex justify-between items-center">
-                      {f.q}
-                      <span className="text-indigo-600 group-open:rotate-45 transition-transform text-lg leading-none">+</span>
+                  <details key={i} className="group rounded-xl border border-white/[0.06] bg-white/[0.015] p-3.5 open:bg-white/[0.03]">
+                    <summary className="cursor-pointer text-sm font-medium text-white/85 list-none flex justify-between items-center gap-3">
+                      <span>{f.q}</span>
+                      <span className="text-cyan-400 group-open:rotate-45 transition-transform text-lg leading-none flex-shrink-0">+</span>
                     </summary>
-                    <p className="text-xs sm:text-sm text-slate-600 mt-2">{f.a}</p>
+                    <p className="text-xs text-white/55 mt-3 leading-relaxed">{f.a}</p>
                   </details>
                 ))}
               </div>
@@ -227,7 +194,9 @@ const Contact = () => {
           </div>
         </div>
 
-        <Toaster position="top-center" />
+        <Toaster position="top-center" toastOptions={{
+          style: { background: '#0a0c10', color: '#fff', border: '1px solid rgba(255,255,255,0.08)' },
+        }} />
       </div>
     </section>
   );

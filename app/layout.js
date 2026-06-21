@@ -68,7 +68,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: '#0f172a',
+  themeColor: '#050608',
   width: 'device-width',
   initialScale: 1,
 };
@@ -81,7 +81,6 @@ const personJsonLd = {
   url: SITE_URL,
   sameAs: [
     'https://www.linkedin.com/in/naveen-dudhyal-ba122a22a',
-    'https://github.com/NaveenD22',
   ],
   knowsAbout: [
     'React',
