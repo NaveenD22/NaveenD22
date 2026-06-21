@@ -30,8 +30,15 @@ const styles = StyleSheet.create({
   headerRow: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' },
   headerLeft: { width: '62%', paddingRight: 16 },
   headerRight: { width: '38%' },
-  name: { fontSize: 24, fontFamily: 'Helvetica-Bold', color: tokens.ink, letterSpacing: -0.4 },
-  role: { fontSize: 10, color: tokens.accent, marginTop: 3, fontFamily: 'Helvetica-Bold' },
+  name: {
+    fontSize: 24,
+    fontFamily: 'Helvetica-Bold',
+    color: tokens.ink,
+    letterSpacing: -0.4,
+    lineHeight: 1.1,
+    marginBottom: 4,
+  },
+  role: { fontSize: 10, color: tokens.accent, marginTop: 6, fontFamily: 'Helvetica-Bold', lineHeight: 1.3 },
   rightBlock: { textAlign: 'right' },
   contactLabel: {
     fontSize: 7,
